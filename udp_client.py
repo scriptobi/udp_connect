@@ -1,7 +1,7 @@
 import socket
 
-serverAdrPort = ("127.0.0.1", 32768)
-msg2Server = "A message from client"
+serverAdrPort = ("192.168.0.34", 32768)
+msg2Server = "A message from client: "
 toSend = str.encode(msg2Server)
 bufferSize = 1024
 
