@@ -1,9 +1,11 @@
 import socket
 
-localIP = "192.168.0.34"
-localPort = 32768
+# localIP = "192.168.0.34"
+hostname = socket.gethostname()
+localIP = socket.gethostbyname(hostname)
+localPort = 5000
 bufferSize = 1024
-msg2Client = "Message to UDP Client"
+msg2Client = "Vous êtes connecté au server."
 bytesMsg = str.encode(msg2Client)
 
 # create datagram socket
@@ -11,15 +13,15 @@ serverSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # bind to address and ip
 serverSocket.bind((localIP, localPort))
-print("UDP server is up and listening")
+print("UDP server is up and listening.")
 
 # listening for incoming messages
-while(True):
+while True:
     bytesObj = serverSocket.recvfrom(bufferSize)
     msg = bytesObj[0]
     adr = bytesObj[1]
-    clientMsg = "Message from client:{}".format(msg)
-    clientAdr = "Client IP Address: {}".format(adr)
+    clientMsg = "Message du client:{}".format(msg)
+    clientAdr = "Adresse IP du client: {}".format(adr)
     print(clientMsg)
     print(clientAdr)
 
