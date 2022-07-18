@@ -5,7 +5,7 @@ hostname = socket.gethostname()
 localIP = socket.gethostbyname(hostname)
 localPort = 5000
 bufferSize = 1024
-msg2Client = "Vous êtes connecté au server."
+msg2Client = "Hello Client !"
 bytesMsg = str.encode(msg2Client)
 
 # create datagram socket
@@ -13,7 +13,8 @@ serverSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # bind to address and ip
 serverSocket.bind((localIP, localPort))
-print("UDP server is up and listening.")
+cnxMsg = "UDP server is up and listening on {}.".format(localIP)
+print(cnxMsg)
 
 # listening for incoming messages
 while True:
