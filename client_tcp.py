@@ -3,16 +3,18 @@ import socket
 serverIP = input("Adresse IP du server: ")
 serverPort = 6000
 
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(serverIP, serverPort)
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.connect((serverIP, serverPort))
 print(f'Connection to {serverIP}:{serverPort} done.')
 
 while True:
     kb_entry = input("Message: ")
     if not kb_entry:
         toSend = str.encode("deconnexion")
-        client.send(toSend)
-        client.close()
+        server.send(toSend)
+        break
     else:
         toSend = str.encode(kb_entry)
-        client.send(toSend)
+        server.send(toSend)
+
+server.close()
