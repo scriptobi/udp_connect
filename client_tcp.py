@@ -6,6 +6,8 @@ serverPort = 6000
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.connect((serverIP, serverPort))
 print(f'Connection to {serverIP}:{serverPort} done.')
+serverMsg = server.recv(1024)
+print(serverMsg)
 
 while True:
     kb_entry = input("Message: ")
